@@ -46,7 +46,7 @@ public class HelloWorld extends HttpServlet {
 		}
 
 		request.setAttribute("nomAffiche", nomAffiche);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/hello.jsp");
 		dispatcher.forward(request, response);
 	}
 
