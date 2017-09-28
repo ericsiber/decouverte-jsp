@@ -36,15 +36,16 @@ public class HelloWorld extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String message = messagePut;
+			throws ServletException, IOException {		
 		String parametre = request.getParameter("nom");
+		String nomAffiche = null;
 		if (parametre != null) {
-			message += parametre;
+			nomAffiche = parametre.toUpperCase();
 		} else {
-			message += "World";
+			nomAffiche = "World";
 		}
 
+		request.setAttribute("nomAffiche", nomAffiche);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("hello.jsp");
 		dispatcher.forward(request, response);
 	}
