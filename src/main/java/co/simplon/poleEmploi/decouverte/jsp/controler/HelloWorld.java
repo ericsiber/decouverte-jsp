@@ -1,4 +1,4 @@
-package co.simplon.poleEmploi.decouverte.jsp;
+package co.simplon.poleEmploi.decouverte.jsp.controler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import co.simplon.poleEmploi.decouverte.jsp.model.Personne;
 
 public class HelloWorld extends HttpServlet {
 
@@ -37,15 +39,11 @@ public class HelloWorld extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {		
-		String parametre = request.getParameter("nom");
-		String nomAffiche = null;
-		if (parametre != null) {
-			nomAffiche = parametre.toUpperCase();
-		} else {
-			nomAffiche = "World";
-		}
+		String pNom = request.getParameter("nom");
+		String pPrenom = request.getParameter("prenom");
+		Personne p = new Personne(pPrenom, pNom.toUpperCase());
 
-		request.setAttribute("nomAffiche", nomAffiche);
+		request.setAttribute("personne", p);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/hello.jsp");
 		dispatcher.forward(request, response);
 	}
