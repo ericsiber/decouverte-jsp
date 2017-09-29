@@ -6,5 +6,6 @@
 </head>
 <body>
 	<h1>Hello ${nomAffiche}</h1>
+	<p>Vous naviguez avec ${header['user-agent']})
 </body>
 </html>
