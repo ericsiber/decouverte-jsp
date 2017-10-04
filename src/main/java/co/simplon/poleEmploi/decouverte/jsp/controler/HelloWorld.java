@@ -3,6 +3,7 @@ package co.simplon.poleEmploi.decouverte.jsp.controler;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -53,6 +54,7 @@ public class HelloWorld extends HttpServlet {
 		personnes.add(p2);
 		
 		request.setAttribute("personnes", personnes);
+		request.setAttribute("currentDate", new Date());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/hello.jsp");
 		dispatcher.forward(request, response);
 	}
