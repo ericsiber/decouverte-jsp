@@ -2,6 +2,8 @@ package co.simplon.poleEmploi.decouverte.jsp.controler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,11 +41,18 @@ public class HelloWorld extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {		
-		String pNom = request.getParameter("nom");
-		String pPrenom = request.getParameter("prenom");
-		Personne p = new Personne(pPrenom, pNom.toUpperCase());
+		String p1Nom = request.getParameter("nom1");
+		String p1Prenom = request.getParameter("prenom1");
+		Personne p1 = new Personne(p1Prenom, p1Nom.toUpperCase());
+		String p2Nom = request.getParameter("nom2");
+		String p2Prenom = request.getParameter("prenom2");
+		Personne p2 = new Personne(p2Prenom, p2Nom.toUpperCase());
 
-		request.setAttribute("personne", p);
+		List<Personne> personnes = new ArrayList<>();
+		personnes.add(p1);
+		personnes.add(p2);
+		
+		request.setAttribute("personnes", personnes);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/hello.jsp");
 		dispatcher.forward(request, response);
 	}
