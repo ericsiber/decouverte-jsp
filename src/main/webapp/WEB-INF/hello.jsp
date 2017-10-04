@@ -1,21 +1,14 @@
 <!DOCTYPE html>
-<%@page import="java.util.List"%>
-<%@page import="co.simplon.poleEmploi.decouverte.jsp.model.Personne"%>
-<jsp:useBean id="personnes" scope="request" type="java.util.List" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Hello</title>
 </head>
 <body>
-	<%
-		for(Personne p : (List<Personne>) personnes) {
-			pageContext.setAttribute("p", p);
-	%>
-		<h1>Hello ${p.prenom} ${p.nom}</h1>
-	<%
-		}
-	%>
+	<c:forEach items="${personnes}" var="p">
+		<h1>Hello ${p.prenom} ${p.nom}</h1>	
+	</c:forEach>
 	<p>Vous naviguez avec ${header['user-agent']})
 </body>
 </html>
